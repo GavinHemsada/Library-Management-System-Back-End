@@ -18,6 +18,13 @@ The **Library Management System** is a backend application built using **Spring 
   - Borrowing history and fine management
 - **Loan Management**
   - Issue and return books
+- **Performance & Security Enhancements**
+  - Caching for improved performance
+  - Indexing for faster database queries
+  - Secure HTTP headers configuration
+  - XSS (Cross-Site Scripting) protection
+  - CSRF (Cross-Site Request Forgery) prevention
+  - Server-side input validation
 
 ## Technologies Used
 - **Spring Boot 3** (Backend framework)
@@ -28,6 +35,8 @@ The **Library Management System** is a backend application built using **Spring 
 - **H2 / MySQL** (Database options)
 - **Lombok** (For reducing boilerplate code)
 - **Swagger** (API documentation)
+- **EhCache / Caffeine** (Caching)
+- **Spring Validation** (Input validation)
 
 ## Installation
 ### Prerequisites
@@ -84,9 +93,18 @@ The **Library Management System** is a backend application built using **Spring 
 
 
 ## Security Implementation
-- Users must authenticate using **JWT tokens**.
-- Passwords are securely stored using **BCrypt hashing**.
-- Only verified users can access restricted endpoints.
+- JWT-based token authentication
+- BCrypt hashing for password storage
+- Email verification before account activation
+- Role-based access control using Spring Security
+- CSRF protection via Spring Security
+- Secure HTTP headers using headers().xssProtection(), frameOptions(), etc.
+- XSS protection with input sanitization
+- Validation of all user inputs using @Valid, @NotNull, and custom validators
+
+## Performance Optimization
+- Caching with Spring Cache abstraction and providers like EhCache or Caffeine
+- Database indexing on frequently queried fields (e.g., book title, author, email)
 
 ## Contribution
 Feel free to contribute to this project by submitting issues or pull requests.
